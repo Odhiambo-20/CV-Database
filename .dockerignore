@@ -1,0 +1,14 @@
+.git
+.gitignore
+.vscode
+.idea
+*.log
+*.tmp
+*.swp
+*~
+.DS_Store
+node_modules
+vendor
+DG1IAD_Portfolio3_Report.docx
+DG1IAD_Portfolio3_Report.odt
+DG1IAD_Portfolio3_Report.html

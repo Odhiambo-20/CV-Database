@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>DG1IAD Portfolio 3 Report</title>
+<style>
+  body { font-family: Calibri, Arial, sans-serif; font-size: 11pt; line-height: 1.25; margin: 1in; }
+  h1 { font-size: 16pt; margin: 0 0 8pt 0; }
+  h2 { font-size: 12pt; margin: 12pt 0 6pt 0; }
+  p, li { margin: 0 0 5pt 0; }
+  ul { margin: 0 0 5pt 18pt; }
+</style>
+</head>
+<body>
+<h1>DG1IAD Internet Applications and Databases<br>Portfolio 3 Project Report (AstonCV)</h1>
+
+<h2>1. Basic Information</h2>
+<ul>
+  <li><b>Student Name:</b> Victor [Surname]</li>
+  <li><b>Student ID:</b> [Your Student ID]</li>
+  <li><b>Entry Page (Host Server):</b> http://[yourusername].cs2410-web01pvm.aston.ac.uk/index.php</li>
+  <li><b>Test User Account for Examiner:</b> Username (Email): testuser@example.com | Password: TestPassword123!</li>
+  <li><b>Source Code Link (if applicable):</b> https://github.com/[your-username]/astoncv</li>
+</ul>
+
+<h2>2. Implemented Functional Requirements and Main Files</h2>
+<p><b>Public functions:</b></p>
+<ul>
+  <li><b>View list of all CVs</b> (name, email, key programming language): <code>index.php</code></li>
+  <li><b>View one CV in detail</b> (education, profile, links, etc.): <code>view_cv.php</code></li>
+  <li><b>Search CVs by name or key programming language</b>: <code>index.php</code></li>
+  <li><b>Register as a user</b>: <code>register.php</code></li>
+</ul>
+
+<p><b>Registered user functions:</b></p>
+<ul>
+  <li><b>Login</b>: <code>login.php</code></li>
+  <li><b>Update own CV details</b>: <code>edit_cv.php</code></li>
+  <li><b>Logout</b>: <code>logout.php</code></li>
+</ul>
+
+<p><b>Shared files:</b> <code>includes/bootstrap.php</code>, <code>includes/db.php</code>, <code>includes/auth.php</code>, <code>includes/csrf.php</code>, <code>includes/helpers.php</code>, <code>includes/layout.php</code>, and <code>schema.sql</code>.</p>
+
+<h2>3. Security Features and Main Files</h2>
+<ul>
+  <li><b>Authentication:</b> User login and session management in <code>login.php</code> and <code>includes/auth.php</code>.</li>
+  <li><b>Authorization:</b> Access to CV editing restricted to logged-in owner only in <code>edit_cv.php</code> and <code>includes/auth.php</code>.</li>
+  <li><b>Password hashing:</b> Passwords hashed with <code>password_hash()</code> and checked by <code>password_verify()</code> in <code>register.php</code> and <code>login.php</code>.</li>
+  <li><b>Form validation:</b> Server-side validation for required fields, email format, length limits, and password rules in <code>register.php</code>, <code>login.php</code>, <code>edit_cv.php</code>, and <code>includes/helpers.php</code>.</li>
+  <li><b>SQL injection prevention:</b> PDO prepared statements and bound parameters used in all database queries (mainly <code>index.php</code>, <code>view_cv.php</code>, <code>register.php</code>, <code>login.php</code>, <code>edit_cv.php</code>).</li>
+  <li><b>XSS prevention:</b> Output escaped using helper function <code>h()</code> in <code>includes/helpers.php</code> and rendered pages.</li>
+  <li><b>CSRF protection:</b> Token generation and verification in <code>includes/csrf.php</code>; verified for form submissions in <code>register.php</code>, <code>login.php</code>, <code>edit_cv.php</code>, and <code>logout.php</code>.</li>
+  <li><b>Session/browser hardening:</b> Session cookie flags (<code>HttpOnly</code>, <code>SameSite=Strict</code>, secure on HTTPS) and security headers in <code>includes/bootstrap.php</code>.</li>
+</ul>
+
+<h2>4. Notes for Examiners</h2>
+<ul>
+  <li>The web application is tested on Chrome as required in the assessment brief.</li>
+  <li>Database setup script is provided in <code>schema.sql</code>.</li>
+  <li>In CV details page, URL links and email are clickable for easier navigation.</li>
+  <li>If deployment uses different database credentials, update <code>config.php</code> (or environment variables) before running.</li>
+  <li>Please use the provided test account to verify login, edit, and logout features.</li>
+</ul>
+
+<p><b>End of Report</b></p>
+</body>
+</html>
